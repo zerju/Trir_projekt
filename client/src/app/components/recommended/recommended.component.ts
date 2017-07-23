@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, NgZone, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-recommended',
@@ -11,7 +11,6 @@ export class RecommendedComponent implements OnInit {
   numOfGames: number;
   page = 0;
   start = 1;
-  end: number;
 
   recommended: {name: string, image: string, year: number}[] = [];
   recommendedInput: {name: string, image: string, year: number}[] = [
@@ -30,26 +29,30 @@ export class RecommendedComponent implements OnInit {
     {name: 'sports', image: 'http://media1.gameinformer.com/imagefeed/featured/bertzblog/SportsGOTY/2012/FIFA%20Franchise.jpg', year: 1994},
   ];
 
-  constructor() {
-    this.width = window.screen.width;
+  constructor(ngZone:NgZone) {
+    this.width = window.innerWidth;
+    window.onresize = (e) =>
+    {
+      ngZone.run(() => {
+        this.width = window.innerWidth;
+      });
+    };
 
   }
 
   ngOnInit() {
     this.numOfGames = Math.floor(this.width / 250);
-    this.end = this.numOfGames;
     let temp = this.recommendedInput.concat([]);
-    temp = temp.splice(this.start, this.end);
+    temp = temp.splice(this.start, this.numOfGames);
     this.recommended = temp;
   }
 
   onPageUp() {
-    if (((this.page * this.numOfGames) + 1) < this.numOfGames){
+    if ((this.start + this.numOfGames) <= this.recommendedInput.length){
       ++this.page;
       this.start = (this.page * this.numOfGames) + 1;
-      this.end = this.start + this.numOfGames - 1 ;
       let temp = this.recommendedInput.concat([]);
-      temp = temp.splice(this.start, this.end);
+      temp = temp.splice(this.start, this.numOfGames);
       this.recommended = temp;
     }
   }
@@ -58,9 +61,8 @@ export class RecommendedComponent implements OnInit {
     if ((this.page - 1) >= 0) {
       --this.page;
       this.start = (this.page * this.numOfGames) + 1;
-      this.end = this.start + this.numOfGames - 1;
       let temp = this.recommendedInput.concat([]);
-      temp = temp.splice(this.start, this.end);
+      temp = temp.splice(this.start, this.numOfGames);
       this.recommended = temp;
     }
   }
