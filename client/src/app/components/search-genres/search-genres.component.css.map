@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,OAAO;EACL,MAAM,EAAE,IAAI;EACZ,UAAU,EAAE,CAAC;EACb,cAAM;IACJ,UAAU,EAAE,GAAG;;AAInB,aAAc;EACZ,KAAK,EAAE,KAAK;EACZ,mBAAQ;IACN,gBAAgB,EAAE,kBAAmB;IACrC,MAAM,EAAE,OAAO",
+"sources": ["search-genres.component.scss"],
+"names": [],
+"file": "search-genres.component.css"
+}

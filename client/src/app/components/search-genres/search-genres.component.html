@@ -1,0 +1,17 @@
+<app-navigation></app-navigation>
+<div class="genres">
+<h2>Search By Genre</h2>
+<div class="cards" fxLayout="row" fxLayoutGap="56px">
+  <md-card (click)="onGenreClick(genre.name)" *ngFor="let genre of genres" fxFlex class="example-card">
+    <md-card-header>
+      <md-card-title>Search By {{genre.name}}</md-card-title>
+    </md-card-header>
+    <img md-card-image [src]="genre.image">
+    <md-card-content>
+      <p>
+        Search our site for videogames that are genre of {{genre.name}}.
+      </p>
+    </md-card-content>
+  </md-card>
+</div>
+</div>

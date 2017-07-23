@@ -1,0 +1,14 @@
+.search {
+  margin-left: 10vw;
+  margin-right: 10vw; }
+
+md-input-container {
+  width: 80vw; }
+
+.example-card {
+  width: 400px; }
+  .example-card:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer; }
+
+/*# sourceMappingURL=search.component.css.map */

@@ -1,0 +1,13 @@
+.genres {
+  margin: 10vw;
+  margin-top: 0; }
+  .genres .cards {
+    margin-top: 5vw; }
+
+.example-card {
+  width: 400px; }
+  .example-card:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer; }
+
+/*# sourceMappingURL=search-genres.component.css.map */

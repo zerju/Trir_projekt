@@ -1,0 +1,29 @@
+.recommended {
+  margin-top: 24px;
+  justify-content: center; }
+
+md-card {
+  width: 200px;
+  height: 200px; }
+
+h4 {
+  margin: 24px; }
+
+md-card-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
+.example-card:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer; }
+.example-card img {
+  min-width: 200px;
+  min-height: 115px;
+  max-height: 115px; }
+
+button {
+  height: 200px;
+  width: 50px; }
+
+/*# sourceMappingURL=recommended.component.css.map */

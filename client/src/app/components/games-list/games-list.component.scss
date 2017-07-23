@@ -1,0 +1,30 @@
+section {
+  display: flex;
+  height: 48px;
+  padding: 0 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  .game-name {
+    cursor: pointer;
+  }
+  }
+  h3 {
+    color: rgba(0, 0, 0, 0.87);
+    text-align: left;
+    align-self: center;
+    font-size: 13px;
+  }
+
+
+
+.static-data {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  height: 48px;
+  padding: 20px 24px 0 24px;
+  .table-title {
+    padding-bottom: 24px;
+    color: rgba(0, 0, 0, 0.54);
+    text-align: left;
+    font-size: 14px;
+    align-self: center;
+  }
+}

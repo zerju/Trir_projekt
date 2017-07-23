@@ -1,0 +1,16 @@
+.genres{
+  margin: 10vw;
+  margin-top: 0;
+  .cards{
+    margin-top: 5vw;
+  }
+}
+
+.example-card {
+  width: 400px;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.10);
+    cursor: pointer;
+  }
+}
+

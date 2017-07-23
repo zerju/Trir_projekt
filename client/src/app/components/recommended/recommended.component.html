@@ -1,3 +1,11 @@
-<p>
-  recommended works!
-</p>
+<h4>Recommended based on your search:</h4>
+<div class="recommended" fxLayout="row" fxLayoutGap="24px">
+  <button (click)="onPageDown()" md-icon-button><md-icon>keyboard_arrow_left</md-icon></button>
+  <md-card *ngFor="let rec of recommended"  class="example-card">
+    <md-card-header>
+      <md-card-title>Search By {{rec.name}} ({{rec.year}})</md-card-title>
+    </md-card-header>
+    <img md-card-image [src]="rec.image">
+  </md-card>
+  <button (click)="onPageUp()" md-icon-button><md-icon>keyboard_arrow_right</md-icon></button>
+</div>
