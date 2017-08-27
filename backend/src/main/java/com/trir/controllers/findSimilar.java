@@ -38,7 +38,7 @@ public class findSimilar {
                         "    ?s a dbo:VideoGame .\n" +
                         "    ?s dbo:genre ?tempGenre .\n" +
                         "    ?tempGenre rdfs:label ?genreLabel .\n" +
-                        "    FILTER regex(?genreLabel, \"^ "+ similar +" \").\n" +
+                        "    FILTER regex(?genreLabel, \"^"+ similar +"\").\n" +
                         "    FILTER langMatches(lang(?y),\"en\")\n" +
                         "}\n" +
                         "  LIMIT 20";
