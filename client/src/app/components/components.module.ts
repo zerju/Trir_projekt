@@ -12,6 +12,7 @@ import {SearchDetailsComponent} from 'app/components/search-details/search-detai
 import {SearchGenresComponent} from "./search-genres/search-genres.component";
 import {RouterModule} from "@angular/router";
 import {GamesListComponent} from "./games-list/games-list.component";
+import {FindGenresService} from "../services/find-genres.service";
 
 const COMPONENTS: any[] = [
   SearchComponent, DetailsComponent, RecommendedComponent, NavigationComponent,
@@ -19,6 +20,7 @@ const COMPONENTS: any[] = [
 ];
 
 @NgModule(
-    {imports: [CommonModule, MdInputModule, MdCardModule, FlexLayoutModule, RouterModule, MdIconModule, MdButtonModule], declarations: COMPONENTS, exports: COMPONENTS})
+    {imports: [CommonModule, MdInputModule, MdCardModule, FlexLayoutModule, RouterModule, MdIconModule, MdButtonModule], declarations: COMPONENTS, exports: COMPONENTS,
+    providers:[FindGenresService]})
 export class ComponentsModule {
 }
