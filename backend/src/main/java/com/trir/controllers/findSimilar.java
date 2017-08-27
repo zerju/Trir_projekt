@@ -1,5 +1,7 @@
 package com.trir.controllers;
 
+
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.trir.DAO.Game;
 import com.trir.DAO.Genre;
@@ -7,22 +9,22 @@ import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.impl.LiteralImpl;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
+
 
 /**
  * Created by Andry on 27. 08. 2017.
  */
 //localhost:8080/search
 @RestController
-public class Search {
+public class findSimilar {
     @CrossOrigin
-    @RequestMapping(path = "/search", method = RequestMethod.GET)
-    public ArrayList<Game> search(@RequestParam(value = "search") String search) {
-        return getSearch(search);
+    @RequestMapping(path = "/findSimilar", method = RequestMethod.GET)
+    public ArrayList<Game> Similar(@RequestParam(value = "similar") String similar) {
+        return setSimilar(similar);
     }
 
-    ArrayList<Game> getSearch(String search) {
+    ArrayList<Game> setSimilar(String similar) {
         ArrayList<Game> resultArray = new ArrayList<Game>();
         String queryString =
                 "PREFIX dbo: <http://dbpedia.org/ontology/> \n" +
@@ -31,14 +33,15 @@ public class Search {
                         "PREFIX dbr: <http://dbpedia.org/resource/> \n" +
                         "\n" +
                         "SELECT ?s WHERE {\n" +
-                        "  {\n" +
-                        "    \n" +
+                        "\n" +
                         "    ?s rdfs:label ?y .\n" +
                         "    ?s a dbo:VideoGame .\n" +
-                        "    FILTER regex(?y, \" "+ search +" \", \"i\").\n" +
-                        "    FILTER langMatches(lang(?y),\"en\").\n" +
-                        "  }\n" +
-                        "}\n";
+                        "    ?s dbo:genre ?tempGenre .\n" +
+                        "    ?tempGenre rdfs:label ?genreLabel .\n" +
+                        "    FILTER regex(?genreLabel, \"^ "+ similar +" \").\n" +
+                        "    FILTER langMatches(lang(?y),\"en\")\n" +
+                        "}\n" +
+                        "  LIMIT 20";
 
         Query query = QueryFactory.create(queryString);
         QueryExecution qexec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", query);
@@ -82,4 +85,5 @@ public class Search {
             return resultArray;
         }
     }
+
 }
