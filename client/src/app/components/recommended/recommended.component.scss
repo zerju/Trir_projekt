@@ -1,32 +1,38 @@
-.recommended{
-  margin-top: 24px;
-  justify-content: center;
+.recommended {
+    margin-top: 24px;
+    justify-content: center;
 }
-md-card{
-  width: 200px;
-  height: 200px;
 
+md-card {
+    width: 200px;
+    height: 200px;
 }
-h4{
-  margin: 24px;
+
+h4 {
+    margin: 24px;
 }
-md-card-title{
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+
+.title {
+    max-height: 40px;
+    height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
 .example-card {
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.10);
-    cursor: pointer;
-  }
-  img{
-    min-width:200px;
-    min-height: 115px;
-    max-height: 115px;
-  }
+    margin-bottom: 25px;
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.10);
+        cursor: pointer;
+    }
+    img {
+        min-width: 200px;
+        min-height: 115px;
+        max-height: 115px;
+    }
 }
-button{
-  height: 200px;
-  width: 50px;
+
+button {
+    height: 200px;
+    width: 50px;
 }

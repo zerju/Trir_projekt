@@ -1,3 +1,25 @@
-<p>
-  search-details works!
-</p>
+<app-navigation></app-navigation>
+<h2>Games list</h2>
+<md-progress-spinner class="spinner" *ngIf="!allGames" class="example-margin" [color]="'primary'" [mode]="'indeterminate'">
+</md-progress-spinner>
+<div fxLayout="column" *ngIf="allGames">
+  <div fxFlex fxLayoutAlign="space-between center" fxLayoutGap='56px' class="static-data" fxLayout='row'>
+    <div fxFlex class="table-title">
+      Name</div>
+    <div fxFlex class="table-title">
+      Genre</div>
+  </div>
+  <div *ngFor="let game of games;let i = index">
+    <section fxLayout='row' fxLayoutAlign="space-between center">
+      <div fxFlex fxLayoutGap="56px">
+        <h3 (click)="onGameClick(game)" class="game-name" fxFlex>{{ game.name }}</h3>
+        <h3 fxFlex>{{game.genre}}</h3>
+      </div>
+    </section>
+  </div>
+</div>
+<md-paginator *ngIf="allGames" (page)="pageChange($event)" [length]="allGames.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+</md-paginator>
+<footer>
+
+</footer>

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -7,17 +8,20 @@ import {Router} from '@angular/router';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+  constructor(private _router: Router) {}
+  searchCtrl = new FormControl();
+  form: FormGroup;
+  ngOnInit() {}
 
-  constructor(private _router: Router) { }
-
-  ngOnInit() {
+  onGenresClick() { this._router.navigateByUrl('/search/genres'); }
+  onNamesClick() {
+    this._router.navigate(['/search/list'], {queryParams: {all: true}});
   }
 
-  onGenresClick(){
-    this._router.navigateByUrl('/search/genres');
+  submit() {
+    console.log(this.searchCtrl.value);
+    localStorage.setItem('search', JSON.stringify(this.searchCtrl.value));
+    this._router.navigate(['/search/s'],
+                          {queryParams: {search: this.searchCtrl.value}});
   }
-  onNamesClick(){
-    this._router.navigate(['/search/list'],{queryParams : {all: true}});
-  }
-
 }

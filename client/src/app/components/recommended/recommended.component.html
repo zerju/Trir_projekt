@@ -1,11 +1,11 @@
 <h4>Recommended based on your search:</h4>
 <div class="recommended" fxLayout="row" fxLayoutGap="24px">
   <button (click)="onPageDown()" md-icon-button><md-icon>keyboard_arrow_left</md-icon></button>
-  <md-card *ngFor="let rec of recommended"  class="example-card">
+  <md-card (click)="onGameClick(rec)" *ngFor="let rec of recommended" class="example-card">
     <md-card-header>
-      <md-card-title>Search By {{rec.name}} ({{rec.year}})</md-card-title>
+      <md-card-title class="title">{{rec.name}}</md-card-title>
     </md-card-header>
-    <img md-card-image [src]="rec.image">
+    <img md-card-image [src]="(rec.thumbnail ? rec.thumbnail : 'http://gamerrevolution.co/wp-content/uploads/2015/08/VideoGame-genres-1020x574.jpg')">
   </md-card>
   <button (click)="onPageUp()" md-icon-button><md-icon>keyboard_arrow_right</md-icon></button>
 </div>

@@ -57,9 +57,9 @@ public class findSimilar {
                         "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> \n" +
                         "PREFIX dbr: <http://dbpedia.org/resource/> \n" +
                         "\n" +
-                        "select ?title ?genre where { <"+ subj.toString() +"> rdfs:label ?title . \n" +
+                        "select ?title ?genre ?thumbnail where { <"+ subj.toString() +"> rdfs:label ?title . \n" +
                         "<" + subj.toString() +"> dbo:genre ?genreTemp .\n" +
-                        "?genreTemp rdfs:label ?genre\n" +
+                        "?genreTemp rdfs:label ?genre .\n" +
                         " FILTER (lang(?title) = 'en').\n" +
                         " FILTER (lang(?genre) = 'en').\n" +
                         "}";
@@ -72,8 +72,12 @@ public class findSimilar {
                     // Resource subj2 = (Resource) binding2.get("Composer");
                     LiteralImpl title = (LiteralImpl) binding2.get("title");
                     LiteralImpl genre = (LiteralImpl) binding2.get("genre");
+                    LiteralImpl thumbnail = (LiteralImpl) binding2.get("thumbnail");
                     game.setResource(subj.toString());
                     game.setName(title.toString());
+                    if(thumbnail != null){
+                        game.setThumbnail(thumbnail.toString());
+                    }
                     if(genre != null)
                         game.setGenre(genre.toString());
                 }

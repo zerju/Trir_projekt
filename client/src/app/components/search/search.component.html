@@ -1,31 +1,32 @@
 <app-navigation></app-navigation>
 <div class="search" fxLayout="column">
-<md-input-container>
-  <input mdInput placeholder="Search">
-</md-input-container>
+  <md-input-container>
+    <input mdInput [formControl]="searchCtrl" placeholder="Search">
+  </md-input-container>
+  <button md-button (click)="submit()">search</button>
   <div class="border"></div>
   <div class="cards" fxLayout="row" fxLayoutGap="56px">
-<md-card (click)="onGenresClick()" fxFlex class="example-card">
-  <md-card-header>
-    <md-card-title>Search By Genre</md-card-title>
-  </md-card-header>
-  <img md-card-image src="http://gamerrevolution.co/wp-content/uploads/2015/08/VideoGame-genres-1020x574.jpg">
-  <md-card-content>
-    <p>
-      Search our site for videogames that suit your genre.
-    </p>
-  </md-card-content>
-</md-card>
-  <md-card (click)="onNamesClick()" fxFlex class="example-card">
-    <md-card-header>
-      <md-card-title>Search By Game Names</md-card-title>
-    </md-card-header>
-    <img md-card-image src="http://gamerrevolution.co/wp-content/uploads/2015/08/VideoGame-genres-1020x574.jpg">
-    <md-card-content>
-      <p>
-        Search all games.
-      </p>
-    </md-card-content>
-  </md-card>
+    <md-card (click)="onGenresClick()" fxFlex class="example-card">
+      <md-card-header>
+        <md-card-title>Search By Genre</md-card-title>
+      </md-card-header>
+      <img md-card-image src="http://gamerrevolution.co/wp-content/uploads/2015/08/VideoGame-genres-1020x574.jpg">
+      <md-card-content>
+        <p>
+          Search our site for videogames that suit your genre.
+        </p>
+      </md-card-content>
+    </md-card>
+    <md-card (click)="onNamesClick()" fxFlex class="example-card">
+      <md-card-header>
+        <md-card-title>Search By Game Names</md-card-title>
+      </md-card-header>
+      <img md-card-image src="http://gamerrevolution.co/wp-content/uploads/2015/08/VideoGame-genres-1020x574.jpg">
+      <md-card-content>
+        <p>
+          Search all games.
+        </p>
+      </md-card-content>
+    </md-card>
   </div>
 </div>
