@@ -6,7 +6,10 @@
   height: 50vh;
   width: 50vw; }
 
-.info h4 {
+.static {
   width: 200px; }
+
+h4 {
+  max-width: 70vw; }
 
 /*# sourceMappingURL=details.component.css.map */

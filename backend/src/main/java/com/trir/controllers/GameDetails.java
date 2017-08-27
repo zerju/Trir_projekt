@@ -32,13 +32,13 @@ public class GameDetails {
                         "\n" +
                         "select ?title  ?composer ?abstract ?platform ?designer ?genre ?thumbnail ?publisher ?developer ?releaseDate where {\n" +
                         "<" + gameResource + "> rdfs:label ?title .\n" +
-                        "<" + gameResource + "> dbo:composer ?tempcomp .\n" +
-                        " ?tempcomp rdfs:label ?composer.\n" +
+                        "optional {<" + gameResource + "> dbo:composer ?tempcomp .\n" +
+                        " ?tempcomp rdfs:label ?composer.}\n" +
                         "\n" +
                         "<" + gameResource + "> dbo:abstract ?abstract.\n" +
                         "\n" +
-                        " <" + gameResource + "> dbo:designer ?tempDes .\n" +
-                        " ?tempDes rdfs:label ?designer.\n" +
+                        "optional { <" + gameResource + "> dbo:designer ?tempDes .\n" +
+                        " ?tempDes rdfs:label ?designer }.\n" +
                         "\n" +
                         "<" + gameResource + "> dbo:genre ?tempGen .\n" +
                         " ?tempGen rdfs:label ?genre.\n" +
@@ -115,7 +115,11 @@ public class GameDetails {
                 game.setName(title.toString());
                 game.setGenre(genreLit.toString());
             }
-        } finally {
+
+        }catch (Exception e){
+            System.out.println(e.toString());
+        }
+        finally {
             qexec.close();
             return game;
         }

@@ -12,6 +12,10 @@ h3 {
   align-self: center;
   font-size: 13px; }
 
+h2 {
+  margin-bottom: 40px;
+  padding-left: 24px; }
+
 .static-data {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   height: 48px;
@@ -22,5 +26,8 @@ h3 {
     text-align: left;
     font-size: 14px;
     align-self: center; }
+
+.spinner {
+  margin-left: 40%; }
 
 /*# sourceMappingURL=games-list.component.css.map */

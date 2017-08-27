@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 @Injectable()
-export class FindGenresService {
+export class FindGamesService {
   constructor(private _http: Http) {
   }
 
-  findGenres() {
-    return this._http.get('http://127.0.0.1:8080/findGenres').map((res) => res.json());
+  findGames() {
+    return this._http.get('http://127.0.0.1:8080/findAll').map((res) => res.json());
   }
 }

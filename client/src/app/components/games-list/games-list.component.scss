@@ -14,7 +14,10 @@ section {
     font-size: 13px;
   }
 
-
+h2{
+  margin-bottom: 40px;
+  padding-left: 24px;
+}
 
 .static-data {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
@@ -27,4 +30,7 @@ section {
     font-size: 14px;
     align-self: center;
   }
+}
+.spinner{
+  margin-left: 40%;
 }

@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {FormControl} from "@angular/forms";
+import {Genre} from "../../models/genre.model";
+import {FindGenresService} from "../../services/find-genres.service";
+import {FindByGenreService} from "../../services/find-by-genre.model";
+import 'rxjs/add/operator/startWith';
+
+import {Observable} from 'rxjs/Observable';
+import {Game} from "../../models/game.model";
 
 @Component({
   selector: 'app-search-genres',
@@ -8,19 +16,56 @@ import {Router} from "@angular/router";
 })
 export class SearchGenresComponent implements OnInit {
 
-  genres: {name: string, image: string}[] = [
-    {name: 'action', image: 'https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAANuAAAAJDExMzgxODg1LWE1NDItNDhhNi05YmRkLWYyYjkxYTEyYjQzMg.jpg'},
-    {name: 'strategy', image: 'https://www.pcgamesn.com/sites/default/files/best%20strategy%20games%20StarCraft%20II_0.jpg'},
-    {name: 'survival', image: 'https://res.cloudinary.com/lmn/image/upload/c_limit,h_360,w_640/e_sharpen:100/f_auto,fl_lossy,q_auto/v1/gameskinnyc/r/s/z/rsz-survive-92589.jpg'},
-    {name: 'sports', image: 'http://media1.gameinformer.com/imagefeed/featured/bertzblog/SportsGOTY/2012/FIFA%20Franchise.jpg'}
-  ];
+  genres: Genre[];
+  filteredGenres: Observable<Genre[]>;
+  games: Game[];
+  allGames: Game[];
 
-  constructor(private _router: Router) { }
+  genreCtrl = new FormControl();
+  constructor(private _router: Router, private _findGenresService: FindGenresService,
+  private _findByGenreService: FindByGenreService) {
+
+  }
 
   ngOnInit() {
+    this._findGenresService.findGenres().subscribe((res) => {
+      if(res){
+        this.genres = res;
+        this.filteredGenres =
+          this.genreCtrl.valueChanges.startWith(null)
+            .map(
+              genre => genre && typeof genre === 'object' ?
+                genre.name :
+                genre)
+            .map(name => name ? this.filter(name) : this.genres.slice());
+      }
+    },(err) => {console.log(err); });
   }
 
-  onGenreClick(genre: string){
-    this._router.navigate(['/search/list'],{queryParams: {genre: genre}});
+  filter(val: string): Genre[] {
+    return this.genres.filter(
+      option => new RegExp(`^${val}`, 'gi').test(option.name));
   }
+
+  findGames(){
+    const name = this.genreCtrl.value.split('@');
+
+    this._findByGenreService.findByGenre(name[0]).subscribe((res) => {
+      if(res){
+        this.allGames = res;
+        this.games = this.allGames.concat([]).slice(0, 10);
+      }
+    },(err) => {console.log(err);});
+  }
+  pageChange(event: any) {
+    const size = event.pageSize;
+    const index = event.pageIndex;
+    const start = index * 10;
+    this.games = this.allGames.concat([]).slice(start, start + size);
+  }
+  onGameClick(game: Game){
+    localStorage.setItem('game', JSON.stringify(game));
+    this._router.navigate(['/details'], {queryParams:{id: game.name}});
+  }
+
 }

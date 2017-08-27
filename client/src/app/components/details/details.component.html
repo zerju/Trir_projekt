@@ -1,28 +1,37 @@
 <app-navigation></app-navigation>
 <div class="details">
-  <h2>Game Name</h2>
-<div fxLayout="row" fxLayoutGap="56px">
+  <h2>{{gameDetail ? gameDetail.name : ''}}</h2>
+<div fxLayout="column" fxLayoutGap="56px" *ngIf="gameDetail">
   <div class="image">
-    <img alt="game_name_img" src="http://media.indiedb.com/images/games/1/25/24826/Placeholder_UI.png">
+    <img *ngIf="gameDetail.thumbnail" alt="game_name_img" [src]="gameDetail.thumbnail">
   </div>
   <div fxLayout="column" class="info">
-    <div fxLayout="row">
-    <h4>Name: </h4><h4> Game Name</h4>
+    <div *ngIf="gameDetail.name" fxLayout="row">
+    <h4 class="static">Name: </h4><h4> {{ gameDetail.name}}</h4>
     </div>
-    <div fxLayout="row">
-      <h4>Created: </h4><h4>01/01/2001</h4>
+    <div *ngIf="gameDetail.gameAbstract" fxLayout="row">
+      <h4 class="static">Description: </h4><h4>{{gameDetail.gameAbstract}}</h4>
     </div>
-    <div fxLayout="row">
-      <h4>Creator: </h4><h4>Game Studios</h4>
+    <div *ngIf="gameDetail.releaseDate" fxLayout="row">
+      <h4 class="static">Release Date: </h4><h4>{{ releaseDate }}</h4>
     </div>
-    <div fxLayout="row">
-      <h4>Release date: </h4><h4>02/01/2001</h4>
+    <div *ngIf="gameDetail.developer" fxLayout="row">
+      <h4 class="static">Developer: </h4><h4>{{ gameDetail.developer}}</h4>
     </div>
-    <div fxLayout="row">
-      <h4>Years developed: </h4><h4>4 years</h4>
+    <div *ngIf="gameDetail.composer" fxLayout="row">
+      <h4 class="static">Composer: </h4><h4>{{gameDetail.composer}}</h4>
     </div>
-    <div fxLayout="row">
-      <h4>Num of developers </h4><h4>38</h4>
+    <div *ngIf="gameDetail.designer" fxLayout="row">
+      <h4 class="static">Designer </h4><h4>{{gameDetail.designer}}</h4>
+    </div>
+    <div *ngIf="gameDetail.genre" fxLayout="row">
+      <h4 class="static">Genre </h4><h4>{{gameDetail.genre}}</h4>
+    </div>
+    <div *ngIf="gameDetail.platform" fxLayout="row">
+      <h4 class="static">Platform </h4><h4>{{gameDetail.platform}}</h4>
+    </div>
+    <div *ngIf="gameDetail.publisher" fxLayout="row">
+      <h4 class="static">Publisher </h4><h4>{{gameDetail.publisher}}</h4>
     </div>
   </div>
 </div>

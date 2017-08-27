@@ -12,3 +12,9 @@ md-input-container{
     cursor: pointer;
 }
 }
+.border{
+  height: 2px;
+  background-color: rgba(0,0,0,0.24);
+  box-shadow: 1px 1px rgba(0,0,0,0.35);
+  margin: 30px -10vw 50px -10vw;
+}

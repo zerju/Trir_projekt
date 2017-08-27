@@ -1,9 +1,11 @@
 <app-navigation></app-navigation>
-<h3 *ngIf="genres;else allGames">Games list of {{inputGenre}} genre</h3>
-<ng-template #allGames>
-<h3>Games list {{inputGenre}}</h3>
-</ng-template>
-<div fxLayout="column">
+<h2>Games list</h2>
+<md-progress-spinner class="spinner" *ngIf="!allGames"
+  class="example-margin"
+  [color]="'primary'"
+  [mode]="'indeterminate'">
+</md-progress-spinner>
+<div fxLayout="column" *ngIf="allGames">
   <div fxFlex fxLayoutAlign="space-between center" fxLayoutGap='56px' class="static-data" fxLayout='row'>
     <div fxFlex class="table-title">
       Name</div>
@@ -11,7 +13,7 @@
       Genre</div>
   </div>
   <div  *ngFor="let game of games;let i = index" >
-    <section *ngIf="!inputGenre || game.genre.toUpperCase() === inputGenre.toUpperCase()" fxLayout='row' fxLayoutAlign="space-between center">
+    <section fxLayout='row' fxLayoutAlign="space-between center">
       <div fxFlex fxLayoutGap="56px">
         <h3 (click)="onGameClick(game)" class="game-name" fxFlex>{{ game.name }}</h3>
         <h3 fxFlex>{{game.genre}}</h3>
@@ -19,6 +21,10 @@
     </section>
   </div>
 </div>
+<md-paginator *ngIf="allGames" (page)="pageChange($event)" [length]="allGames.length"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]">
+</md-paginator>
 <footer>
 
 </footer>

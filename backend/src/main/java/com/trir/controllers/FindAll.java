@@ -33,7 +33,7 @@ public class FindAll {
                         "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> \n" +
                         "PREFIX dbr: <http://dbpedia.org/resource/> \n" +
                         "\n" +
-                        "select distinct ?Concept where {?Concept a dbo:VideoGame} LIMIT 300";
+                        "select distinct ?Concept where {?Concept a dbo:VideoGame} LIMIT 400";
 
 
         Query query = QueryFactory.create(queryString);
@@ -64,6 +64,7 @@ public class FindAll {
                     // Resource subj2 = (Resource) binding2.get("Composer");
                     LiteralImpl title = (LiteralImpl) binding2.get("title");
                     LiteralImpl genre = (LiteralImpl) binding2.get("genre");
+                    game.setResource(subj.toString());
                     game.setName(title.toString());
                     if(genre != null)
                         game.setGenre(genre.toString());

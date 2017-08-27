@@ -1,10 +1,4 @@
-.genres{
-  margin: 10vw;
-  margin-top: 0;
-  .cards{
-    margin-top: 5vw;
-  }
-}
+
 
 .example-card {
   width: 400px;
@@ -13,4 +7,46 @@
     cursor: pointer;
   }
 }
+section {
+  display: flex;
+  height: 48px;
+  padding: 0 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  .game-name {
+    cursor: pointer;
+  }
+}
+h3 {
+  color: rgba(0, 0, 0, 0.87);
+  text-align: left;
+  align-self: center;
+  font-size: 13px;
+}
 
+.border{
+  height: 2px;
+  background-color: rgba(0,0,0,0.24);
+  box-shadow: 1px 1px rgba(0,0,0,0.35);
+  margin: 30px -10vw 50px -10vw;
+}
+h2{
+  margin-bottom: 40px;
+  padding-left: 24px;
+}
+.autocomplete{
+  margin-bottom: 20px;
+  margin-left: 24px;
+}
+
+.static-data {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  height: 48px;
+  padding: 20px 24px 0 24px;
+  .table-title {
+    padding-bottom: 24px;
+    color: rgba(0, 0, 0, 0.54);
+    text-align: left;
+    font-size: 14px;
+    align-self: center;
+  }
+}
